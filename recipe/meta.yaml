@@ -11,7 +11,7 @@ source:
 build:
   noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
@@ -40,7 +40,6 @@ test:
     - requests_cache
     - requests_cache.backends
     - requests_cache.models
-    - requests_cache.policy
     - requests_cache.serializers
 
 about:
@@ -49,6 +48,9 @@ about:
   license: BSD-2-Clause
   license_family: BSD
   summary: A transparent persistent cache for the requests library
+  description: |
+    requests-cache is a persistent HTTP cache that provides an easy way to get better performance with the python requests library.
+  dev_url: https://github.com/requests-cache/requests-cache
   doc_url: https://requests-cache.readthedocs.io
 
 extra:
