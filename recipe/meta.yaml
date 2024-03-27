@@ -15,19 +15,19 @@ build:
 
 requirements:
   host:
-    - python >=3.7
-    - poetry
+    - python >=3.8
+    - poetry >=1.0.0
     - pip
 
   run:
     - python >=3.7
-    - appdirs >=1.4.4
     - attrs >=21.2
     - cattrs >=22.2
     - itsdangerous >=2.0
+    - platformdirs >=2.5
     - pyyaml >=5.4
     - requests >=2.22
-    - ujson >=4.0
+    - ujson >=5.4
     - url-normalize >=1.4
     - urllib3 >=1.25.5
 
