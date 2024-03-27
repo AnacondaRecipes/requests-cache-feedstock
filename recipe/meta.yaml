@@ -9,13 +9,13 @@ source:
   sha256: db1c709ca343cc1cd5b6c8b1a5387298eceed02306a6040760db538c885e3838
 
 build:
-  noarch: python
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  skip: True  # [py<38]
 
 requirements:
   host:
-    - python >=3.8
+    - python
     - poetry >=1.0.0
     - pip
     - setuptools
