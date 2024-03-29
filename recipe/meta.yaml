@@ -16,13 +16,13 @@ build:
 requirements:
   host:
     - python
-    - poetry 1.4.0
+    - poetry-core
     - pip
     - setuptools
     - wheel
 
   run:
-    - python >=3.7
+    - python
     - attrs >=21.2
     - cattrs >=22.2
     - itsdangerous >=2.0
