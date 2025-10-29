@@ -1,4 +1,4 @@
-{% set version = "1.2.0" %}
+{% set version = "1.2.1" %}
 
 package:
   name: requests-cache
@@ -6,19 +6,18 @@ package:
 
 source:
   url: https://pypi.org/packages/source/r/requests-cache/requests_cache-{{ version }}.tar.gz
-  sha256: db1c709ca343cc1cd5b6c8b1a5387298eceed02306a6040760db538c885e3838
+  sha256: 68abc986fdc5b8d0911318fbb5f7c80eebcd4d01bfacc6685ecf8876052511d1
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: True  # [py<38]
+  skip: true  # [py<38]
 
 requirements:
   host:
     - python
     - poetry-core
     - pip
-
   run:
     - python
     - attrs >=21.2
@@ -36,6 +35,21 @@ requirements:
     - pymongo >=3
     - redis >=3
     - bson >=0.5
+    - redis-py >=3
+    - itsdangerous >=2.0
+    - pyyaml >=6.0.1
+    - ujson >=5.4
+    - furo >=2023.3.0,<2024.0.0
+    - linkify-it-py >=2.0.0,<3.0.0
+    - myst-parser >=1.0.0,<2.0.0
+    - sphinx >=5.0.2,<6.0.0
+    - sphinx-autodoc-typehints >=1.19
+    - sphinx-automodapi >=0.14
+    - sphinx-copybutton >=0.5
+    - sphinx-design >=0.2
+    - sphinx-notfound-page >=0.8
+    - sphinxcontrib-apidoc >=0.3
+    - sphinxext-opengraph >=0.9
 
 test:
   requires:
