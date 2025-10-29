@@ -1,12 +1,13 @@
-{% set version = "1.2.0" %}
+{% set name = "requests-cache" %}
+{% set version = "1.2.1" %}
 
 package:
-  name: requests-cache
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/r/requests-cache/requests_cache-{{ version }}.tar.gz
-  sha256: db1c709ca343cc1cd5b6c8b1a5387298eceed02306a6040760db538c885e3838
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_')}}-{{ version }}.tar.gz
+  sha256: 68abc986fdc5b8d0911318fbb5f7c80eebcd4d01bfacc6685ecf8876052511d1
 
 build:
   number: 0
@@ -15,38 +16,41 @@ build:
 
 requirements:
   host:
-    - python
-    - poetry-core
     - pip
-
+    - python
+    - poetry-core >=1.0.0
   run:
     - python
+    - requests >=2.22
+    - urllib3 >=1.25.5
     - attrs >=21.2
     - cattrs >=22.2
-    - itsdangerous >=2.0
     - platformdirs >=2.5
-    - pyyaml >=6.0.1
-    - requests >=2.22
-    - ujson >=5.4
     - url-normalize >=1.4
-    - urllib3 >=1.25.5
   run_constrained:
+    # Optional backend dependencies
     - boto3 >=1.15
     - botocore >=1.18
     - pymongo >=3
     - redis >=3
+    # Optional serialization dependencies
     - bson >=0.5
+    - itsdangerous >=2.0
+    - pyyaml >=6.0.1
+    - ujson >=5.4
 
+# Unable to run tests: 
+# Module not found "timeout-decorator" -> https://pypi.org/project/timed-decorator (pkg is not in the main channel)
 test:
-  requires:
-    - pip
-  commands:
-    - pip check
   imports:
     - requests_cache
     - requests_cache.backends
     - requests_cache.models
     - requests_cache.serializers
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/requests-cache/requests-cache
